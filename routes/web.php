@@ -14,6 +14,15 @@ use App\Http\Controllers\PerformingRoleController;
 use App\Http\Controllers\ExamPerformingRoleController;
 use App\Http\Controllers\PaymentController;
 
+use App\Http\Controllers\Reports\PreparationOfQuestionPaperReportController;
+use App\Http\Controllers\Reports\EvaluationReportController;
+use App\Http\Controllers\Reports\ConductOfExaminatiosReportController;
+
+use App\Http\Controllers\Dashboards\AdminDashboardController;
+use App\Http\Controllers\Dashboards\HODDashboardController;
+use App\Http\Controllers\Dashboards\ExaminerDashboardController;
+
+//use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +36,61 @@ use App\Http\Controllers\PaymentController;
 */
 
 Route::get('/', function () {
-    return view('layout/home');
+    return view('layout/welcome');
 });
 
-/*Route::get('/dashboard', function () {
-    return view('layout/admin');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admindashboard', [AdminDashboardController::class, 'index']);
+Route::get('/hoddashboard', [HODDashboardController::class, 'index']);
+Route::get('/examinerdashboard', [ExaminerDashboardController::class, 'index']);
+
+
+
+
+Route::get('/preparationofquestionpaperreport',[PreparationOfQuestionPaperReportController::class,'index']);
+Route::get('/evaluationreport',[EvaluationReportController::class,'index']);
+Route::get('/conductofexaminationreport',[ConductOfExaminatiosReportController::class,'index']);
+
+
+/*Route::get('/login',[LoginController::class,'LoginForm']);
+Route::post('/checklogin',[LoginController::class,'Login']);
+Route::get('/logout',[LoginController::class,'logout']);*/
+
+
+
+/*Auth::routes();
+Route::get('/admindashboard',[AdminDashboardController::class,'index'])->name('admindashboard')->middleware('admin');
+Route::get('/hoddashboard',[HODDashboardController::class,'index'])->name('hoddashboard')->middleware('hod');
+Route::get('/examinerdashboard',[ExaminerDashboardController::class,'index'])->name('examinerdashboard')->middleware('examiner');*/
+
+
+/*Auth::routes();
+Route::group(['as'=>'admin.','prefix' => 'admin','namespace'=>'Admin','middleware'=>['auth','admin']], function () {
+    Route::get('admindashboard', 'AdminDashboardController@index')->name('admindashboard');
 });*/
 
-Route::get('/dashboard', function () {
-    return view('admin/dashboard');
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/roles',[RoleController::class,'index']);
 //Display Create New Role
@@ -196,23 +250,8 @@ Route::delete('/deletepayments/{id}',[PaymentController::class,'destroy'])->name
 
 
 
-Route::get('/summary2', function () {
-    return view('layout/summary2');
-});
-
-Route::get('/summary1', function () {
-    return view('layout/summary1');
-});
-
-Route::get('/summary3', function () {
-    return view('layout/summary3');
-});
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

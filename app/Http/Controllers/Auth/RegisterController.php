@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -29,6 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
+    //protected $redirectTo = '/login';
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -50,8 +52,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'mobile' => ['required'],
+            'bank_acc_num' => ['required'],
+            'bank_name' => ['required'],
+            'nic_num' => ['required'],
+            'designation' => ['required'],
+            'user_type_id' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -65,9 +75,18 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'user_name' => $data['user_name'],
             'email' => $data['email'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'mobile' => $data['mobile'],
+            'bank_acc_num' => $data['bank_acc_num'],
+            'bank_name' => $data['bank_name'],
+            'nic_num' => $data['nic_num'],
+            'designation' => $data['designation'],
+            'user_type_id' => $data['user_type_id'],
             'password' => Hash::make($data['password']),
         ]);
     }
+        
 }

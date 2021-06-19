@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Role;
+//use App\Models\UserRole;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -69,5 +70,38 @@ class User extends Authenticatable
     public function actions()
     {
         return $this->belongsToMany(Action::class,'performing_roles');
+    }
+
+
+
+
+    public function authorizeRoles($roles)
+    {
+      if ($this->hasAnyRole($roles)) {
+        return true;
+      }
+      abort(401, 'This action is unauthorized.');
+    }
+    public function hasAnyRole($roles)
+    {
+      if (is_array($roles)) {
+        foreach ($roles as $role) {
+          if ($this->hasRole($role)) {
+            return true;
+          }
+        }
+      } else {
+        if ($this->hasRole($roles)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    public function hasRole($role)
+    {
+      if ($this->roles()->where('type', $role)->first()) {
+        return true;
+      }
+      return false;
     }
 }

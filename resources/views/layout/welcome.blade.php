@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>home</title>
+    <title>Exam Claim Management System</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,8 +50,9 @@ to fix nav bar on top use ---fix-top class or fixed-bottom
 <div class="col-7">
     <div class="col-12 p-3">
         <form>
-        <a href="/login" class="btn btn-lg btn-primary w-25" role="button">Login</a>
-        <a href="/register" class="btn btn-lg btn-primary w-25" role="button">Register</a>
+        <a href="{{ route('login') }}" name="log" id="log">Login</a>
+      
+        <a href="{{ route('register') }}"  name="reg" id="reg">Register</a>
           <br><br><br><br><br><br><br>
         </form>
     </div>

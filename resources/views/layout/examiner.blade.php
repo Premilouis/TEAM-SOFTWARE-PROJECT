@@ -32,81 +32,27 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="/admindashboard">
+            <a href="/hoddashboard">
               <i class="now-ui-icons ui-1_settings-gear-63"></i>
-              <p>Admin Dashboard</p>
+              <p>Examiner Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="/users">
+            <a href="/preparationofquestionpaperreport">
             <i class="now-ui-icons users_circle-08"></i>
-              <p>Users</p>
+              <p>PreparationOfQuestionPaper</p>
             </a>
           </li>
           <li>
-            <a href="/exams">
+            <a href="/evaluationreport">
               <i class="now-ui-icons users_circle-08"></i>
-              <p>Exams</p>
+              <p>Evaluation</p>
             </a>
           </li>
           <li>
-            <a href="/courses">
+            <a href="/conductofexaminationreport">
               <i class="now-ui-icons users_circle-08"></i>
-              <p>Courses</p>
-            </a>
-          </li>
-          <li>
-            <a href="/roles">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>Roles</p>
-            </a>
-          </li>
-          <li>
-            <a href="/actions">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>Actions</p>
-            </a>
-          </li>
-          <li>
-            <a href="/usertypes">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>UserTypes</p>
-            </a>
-          </li>
-          <li>
-            <a href="/examtypes">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>ExamTypes</p>
-            </a>
-          </li>
-          <li>
-            <a href="/payments">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>Payments</p>
-            </a>
-          </li>
-          <li>
-            <a href="/prices">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>Prices</p>
-            </a>
-          </li>
-          <li>
-            <a href="/userroles">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>UserRoles</p>
-            </a>
-          </li>
-          <li>
-            <a href="/performingroles">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>PerformingRoles</p>
-            </a>
-          </li>
-          <li>
-            <a href="/examperformingroles">
-            <i class="now-ui-icons users_circle-08"></i>
-              <p>ExamPerformingRoles</p>
+              <p>ConductOfExamination</p>
             </a>
           </li>
           
@@ -126,7 +72,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div><!--navbar-toggle-->
-            <a class="navbar-brand" href="#"><h2> Admin Dashboard</h2></a>
+            <a class="navbar-brand" href="#"><h2> Examiner Dashboard</h2></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -175,7 +121,7 @@
                                 </div>
                         </li>
 
-              <!--  <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="assets/img/default-avatar.png" alt="user_name" height="30px" width="30px" class="rounded-circle">
                
@@ -188,7 +134,7 @@
                   <a class="dropdown-item" href="#">Account</a><hr>
                   <a class="dropdown-item" href="#">Log-out</a>
                 </div>
-              </li>  -->
+              </li> -->
               
             </ul>
           </div>
