@@ -93,23 +93,29 @@
         </thead>
 
         <tbody>
-            @for ($j = 0; $j < 3; $j++)
+            @foreach($users as $user)
               <tr>
                 
                   <tr>
-                    <th colspan="19" style = "text-align:left">Name of Examiner,Designation,NIC Number(Internal Examiner/External Examiner/Foreign Examiner)</th>
+                    <td colspan="19" style = "text-align:left">{{$user->first_name}} {{$user->last_name}},{{$user->designation}},{{$user->nic_num}}({{$user->usertype}})</td>
+                   
                   </tr>
 
-                  @for ($i = 0; $i < 2; $i++)
+                  @foreach($exams as $exam)
                   <tr>
-                    <td border="1px solid black">########## </td>
-                    <td border="1px solid black">########## </td>
-                    <td border="1px solid black">########## </td>
+                    <td>{{$exam->coursecode}} </td>
+                    <td>{{$exam->examtype}} </td>
+                    <td>{{$exam->actionname}} </td>
+                    <td>{{$exam->examduration}}</td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+
                     
                     
                   </tr>
                   
-                  @endfor
+                  @endforeach
 
                   <tr>
                     <td colspan="18" style = "text-align:right">Grand Total</td>
@@ -118,7 +124,7 @@
 
               </tr>
              
-              @endfor
+            @endforeach
             </tbody>
 
             

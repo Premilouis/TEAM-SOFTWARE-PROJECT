@@ -37,7 +37,7 @@
             
             <td colspan = 2>Actions</td>
             </tr>
-        </thead>
+    </thead>
         <tbody>
             @foreach($exams as $exam)
             <tr>
