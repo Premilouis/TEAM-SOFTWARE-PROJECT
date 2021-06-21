@@ -139,8 +139,7 @@
 
                         <div class="form-group row">
                             <label for="user_type_id" class="col-md-4 col-form-label text-md-right">{{ __('User Type ID') }}</label>
-                            <div> 1 : Internal 2: External 3 : Foreigner </div>
-
+                            
                             <div class="col-md-6">
                                 <input id="user_type_id" type="text" class="form-control @error('user_type_id') is-invalid @enderror" name="user_type_id" value="{{ old('user_type_id') }}" required autocomplete="user_type_id" autofocus>
 
@@ -150,6 +149,8 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div> 1 : Internal 2: External 3 : Foreigner </div>
+
                         </div>
         
                         <div class="form-group row">

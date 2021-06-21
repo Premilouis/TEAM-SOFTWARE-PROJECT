@@ -34,10 +34,10 @@
     <div class="row">
 
         <div class="col-8">
-            <h5 class="row-center">Faculty : ....................................................................................................</h5>
-            <h5 class="row-center">Department : ..........................................................................................</h5>
-            <h5 class="row-center">Name of Examination : ........................................................................</h5>
-        </div>
+            <h5 class="row-center">Faculty : Science</h5>
+            <h5 class="row-center">Department : Computer Science</h5>
+            <h5 class="row-center">Name of Examination : 1st Semester Examination in Science - 2021</h5>
+        </div> 
 
     </div>
 
@@ -93,29 +93,39 @@
         </thead>
 
         <tbody>
-            @foreach($users as $user)
+            @foreach($payments as $payment)
               <tr>
                 
                   <tr>
-                    <td colspan="19" style = "text-align:left">{{$user->first_name}} {{$user->last_name}},{{$user->designation}},{{$user->nic_num}}({{$user->usertype}})</td>
-                   
-                  </tr>
-
-                  @foreach($exams as $exam)
-                  <tr>
-                    <td>{{$exam->coursecode}} </td>
-                    <td>{{$exam->examtype}} </td>
-                    <td>{{$exam->actionname}} </td>
-                    <td>{{$exam->examduration}}</td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-
-                    
-                    
+                    <td colspan="19" style = "text-align:left">{{$payment->userFirstName}} {{$payment->userLastName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}}) </td>
+                
                   </tr>
                   
-                  @endforeach
+                 
+                  <tr>
+                    <td>{{$payment->courseCode}} </td>
+                    <td>{{$payment->examType}} </td>
+                    <td>{{$payment->actionName}} </td>
+                    <td>{{$payment->examDuration}}</td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+
+                  </tr>
+                  
+                
 
                   <tr>
                     <td colspan="18" style = "text-align:right">Grand Total</td>

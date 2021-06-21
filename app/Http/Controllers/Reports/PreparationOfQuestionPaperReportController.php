@@ -17,52 +17,90 @@ class PreparationOfQuestionPaperReportController extends Controller
    public function index()
    {
 
+        
+        $payments = DB::table('payments')
+        ->leftJoin('users','users.id',"=",'payments.user_id')
+        ->leftJoin('user_types','user_types.id',"=",'users.user_type_id')
+        ->leftJoin('exams','exams.id',"=",'payments.exam_id')
+        ->leftJoin('courses','courses.id',"=",'exams.course_id')
+        ->leftJoin('exam_types','exam_types.id',"=",'exams.exam_type_id')
+        ->leftJoin('prices','prices.id',"=",'payments.price_id')
+        ->leftJoin('performing_roles','performing_roles.id',"=",'payments.performing_role_id')
+        ->leftJoin('actions','actions.id',"=",'performing_roles.action_id')
+        
+        ->select(
+            //'payments.id as paymentId',
 
-       /*$users = DB::table('users')
-       ->leftJoin('performing_roles','performing_roles.user_id',"=",'users.id')
-       ->leftJoin('exam_performing_roles','exam_performing_roles.performing_role_id',"=",'exam_performing_roles.id')
-       ->leftJoin('exams','exam_performing_roles.exam_id',"=",'exams.id')
-       ->leftJoin('user_types','users.user_type_id',"=",'user_types.id')
-       ->leftJoin('courses','exams.course_id',"=",'courses.id')
-       ->select('users.first_name','users.last_name','users.designation','users.nic_num','user_types.type as usertype','courses.code as coursecode')
-       ->get();*/
+            //'users.id as userId',
+            'users.first_name as userFirstName',
+            'users.last_name as userLastName',
+            'users.designation as userDesignation',
+            'users.nic_num as userNicNum',
 
-       /*$users = DB::table('users')
-       ->leftJoin('payments','payments.user_id',"=",'users.id')
-       ->leftJoin('exams','payments.exam_id',"=",'exams.id')
-       ->leftJoin('prices','payments.price_id',"=",'prices.id')
-       ->leftJoin('performing_roles','payments.performing_role_id',"=",'performing_roles.id')
-       ->leftJoin('courses','exams.course_id',"=",'courses.id')
-       ->leftJoin('user_types','users.user_type_id',"=",'user_types.id')
-       ->leftJoin('actions','performing_roles.action_id',"=",'actions.id')
-       ->select('users.first_name','users.last_name','users.designation','users.nic_num','user_types.type as usertype','courses.code as coursecode')
-       ->get();*/
+            //'user_types.id as userTypeId',
+            'user_types.type as userType',
 
-       $users = DB::table('users')
-       ->leftJoin('performing_roles','performing_roles.user_id',"=",'users.id')
-       ->leftJoin('exam_performing_roles','exam_performing_roles.performing_role_id',"=",'exam_performing_roles.id')
-       //->leftJoin('exams','exam_performing_roles.exam_id',"=",'exams.id')
-       ->leftJoin('user_types','users.user_type_id',"=",'user_types.id')
-       //->leftJoin('courses','exams.course_id',"=",'courses.id')
-       ->select('users.first_name','users.last_name','users.designation','users.nic_num','user_types.type as usertype')
-       //->where('exam_performing_roles.id',"=",'users.exam_performing_role_id')
-       ->get();
+            //'exams.id as examID',
+            'exams.duration as examDuration',
+            'exams.num_of_pages as examNumOfPages',
+
+            //'courses.id as courseID',
+            'courses.code as courseCode',
+
+            //'prices.id as priceID',
+
+            //'exam_types.id as examTypeId',
+            'exam_types.type as examType',
+
+            //'performing_roles.id as performingRoleId',
+
+            //'actions.id as actionId',
+            'actions.name as actionName'
+
+            )
+        ->get();
+        //dd($payments);
+
+        return view('preparationofquestionpapers.index', compact('payments'));
 
 
-       //dd($users);
+        /*$payments = DB::table('payments')
+        ->leftJoin('users','users.id',"=",'payments.user_id')
+        ->leftJoin('user_types','user_types.id',"=",'users.user_type_id')
+        ->leftJoin('exams','exams.id',"=",'payments.exam_id')
+        ->leftJoin('courses','courses.id',"=",'exams.course_id')
+        ->select(
+            'payments.id as paymentId',
+            'users.id as userId',
+            'users.first_name as userFirstName',
+            'user_types.id as userTypeId',
+            'exams.id as examID',
+            'exams.duration as examDuration',
+            'courses.id as courseID'
+            )
+        ->get();
+        dd($payments);*/
+
+
+
+         /*foreach ($payments as $payment)
+         { 
+            // Code Here 
+            
+            
+            $user = DB::table('users')
+            ->leftJoin('user_types','user_types.id',"=",'users.user_type_id')
+            ->get();
+            dd($user);
+
+            $usertype = DB::table('user_types')
+            ->where('id', '=', $user->user_type_id)
+            ->get();
+            dd($usertype);
+        }*/
+
+
        
-       $exams = DB::table('exams')
-       ->leftJoin('exam_performing_roles','exam_performing_roles.exam_id',"=",'exams.id')
-       ->leftJoin('performing_roles','exam_performing_roles.performing_role_id',"=",'performing_roles.id')
-       ->leftJoin('actions','performing_roles.action_id',"=",'actions.id')
-       ->leftJoin('users','performing_roles.user_id',"=",'users.id')
-       ->leftJoin('courses','exams.course_id',"=",'courses.id')
-       ->leftJoin('exam_types','exams.exam_type_id',"=",'exam_types.id')
-       ->select('courses.code as coursecode','exam_types.type as examtype','actions.name as actionname','exams.duration as examduration')
-       ->get();
-       
-       //dd($exams);
-       return view('preparationofquestionpapers.index', compact('users','exams'));
    }
     
 }
