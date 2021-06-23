@@ -36,14 +36,10 @@
             </div>
             <div class="form-group">
 
-                <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" name="first_name" value={{ $user->first_name }} />
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" value={{ $user->name }} />
             </div>
-            <div class="form-group">
-
-                <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" name="last_name" value={{ $user->last_name }} />
-            </div>
+            
             <div class="form-group">
 
                 <label for="mobile">Mobile:</label>

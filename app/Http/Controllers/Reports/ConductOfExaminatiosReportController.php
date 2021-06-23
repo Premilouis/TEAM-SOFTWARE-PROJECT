@@ -15,16 +15,62 @@ class ConductOfExaminatiosReportController extends Controller
 {
     // For index page
     public function index()
-    {
-        $users = DB::table('users')
-       ->leftJoin('payments','payments.user_id',"=",'users.id')
-       ->leftJoin('exams','payments.exam_id',"=",'exams.id')
-       ->leftJoin('courses','exams.course_id',"=",'courses.id')
-       ->select('users.*','exams.*','courses.*')
-       ->get();
-       //dd($users);
+   {
 
-        return view('conductofexaminations.index', compact('users'));
+        
+        $payments = DB::table('payments')
+        ->leftJoin('users','users.id',"=",'payments.user_id')
+        ->leftJoin('user_types','user_types.id',"=",'users.user_type_id')
+        ->leftJoin('exams','exams.id',"=",'payments.exam_id')
+        ->leftJoin('courses','courses.id',"=",'exams.course_id')
+        ->leftJoin('exam_types','exam_types.id',"=",'exams.exam_type_id')
+        ->leftJoin('prices','prices.id',"=",'payments.price_id')
+        ->leftJoin('performing_roles','performing_roles.id',"=",'payments.performing_role_id')
+        ->leftJoin('actions','actions.id',"=",'performing_roles.action_id')
+        
+        ->select(
+            //'payments.id as paymentId',
 
-    }
+            //'users.id as userId',
+            'users.name as userName',
+            'users.designation as userDesignation',
+            'users.nic_num as userNicNum',
+
+            //'user_types.id as userTypeId',
+            'user_types.type as userType',
+
+            //'exams.id as examID',
+            'exams.date as examDate',
+            'exams.start_time as examStartTime',
+            'exams.end_time as examEndTime',
+            'exams.num_of_students as examNumOfStudents',
+            'exams.num_of_groups as examNumOfGroups',
+
+            //'courses.id as courseID',
+            'courses.code as courseCode',
+
+            //'prices.id as priceID',
+            'prices.price as unitPrice',
+
+            //'exam_types.id as examTypeId',
+            'exam_types.type as examType',
+
+            //'performing_roles.id as performingRoleId',
+
+            //'actions.id as actionId',
+            'actions.name as actionName'
+
+            )
+            //->groupBy('userName')
+            ->get();
+        //dd($payments);
+
+        return view('conductofexaminations.index', compact('payments'));
+
+
+        
+
+       
+   }
+    
 }

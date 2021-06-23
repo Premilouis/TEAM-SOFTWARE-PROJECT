@@ -60,6 +60,7 @@ class PriceController extends Controller
 
     public function edit($id)
     {
+        
         $price = Price::find($id);
         $usertype = UserType::all();
         $examtype = ExamType::all();

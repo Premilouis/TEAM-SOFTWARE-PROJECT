@@ -33,10 +33,10 @@
 
     <div class="row">
 
-        <div class="col-8">
-            <h5 class="row-center">Faculty : ....................................................................................................</h5>
-            <h5 class="row-center">Department : ..........................................................................................</h5>
-            <h5 class="row-center">Name of Examination : ........................................................................</h5>
+    <div class="col-8">
+        <h5 class="row-center">Faculty : Science</h5>
+            <h5 class="row-center">Department : Computer Science</h5>
+            <h5 class="row-center">Name of Examination : 1st Semester Examination in Science - 2021</h5>
         </div>
 
     </div>
@@ -78,32 +78,164 @@
         </thead>
 
         <tbody>
-            @for ($j = 0; $j < 3; $j++)
+        @foreach($payments as $payment)
               <tr>
                 
-                  <tr>
-                    <th colspan="15" style = "text-align:left">Name of Examiner,Designation,NIC Number(Internal Examiner/External Examiner/Foreign Examiner)</th>
-                  </tr>
+                <tr>
+                    <td colspan="15" style = "text-align:left">
+                    @if ($payment->actionName == "Supervision")
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}})
+                    @elseif ($payment->actionName == "Invigilation") 
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}})
+                    @elseif ($payment->actionName == "Technical Officer") 
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}})
+                    @elseif ($payment->actionName == "Lab Attendants") 
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}})
+                    @elseif ($payment->actionName == "Hall Attendant") 
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}})
+                    @endif
+                  </td>
+                
+                </tr>
+                <tr>
+                  <td>
+                    @if ($payment->actionName == "Supervision")
+                      {{$payment->courseCode}} 
+                    @elseif ($payment->actionName == "Invigilation")  
+                      {{$payment->courseCode}}  
+                    @elseif ($payment->actionName == "Technical Officer")  
+                      {{$payment->courseCode}}  
+                    @elseif ($payment->actionName == "Lab Attendants")  
+                      {{$payment->courseCode}}  
+                    @elseif ($payment->actionName == "Hall Attendant")  
+                      {{$payment->courseCode}}  
+                    @endif
+                  </td>  
 
-                  @for ($i = 0; $i < 2; $i++)
-                  <tr>
-                    <td border="1px solid black">########## </td>
-                    <td border="1px solid black">########## </td>
-                    <td border="1px solid black">########## </td>
-                    
-                    
-                  </tr>
+                  <td>
+                    @if ($payment->actionName == "Supervision")
+                      {{$payment->examDate}} 
+                    @elseif ($payment->actionName == "Invigilation")  
+                      {{$payment->examDate}}  
+                    @elseif ($payment->actionName == "Technical Officer")  
+                      {{$payment->examDate}}  
+                    @elseif ($payment->actionName == "Lab Attendants")  
+                      {{$payment->examDate}}  
+                    @elseif ($payment->actionName == "Hall Attendant")  
+                      {{$payment->examDate}}  
+                    @endif  
+                  </td> 
                   
-                  @endfor
+                  <td>
+                    @if ($payment->actionName == "Supervision")
+                      {{$payment->examStartTime}}-{{$payment->examEndTime}} 
+                    @elseif ($payment->actionName == "Invigilation")  
+                      {{$payment->examStartTime}}-{{$payment->examEndTime}} 
+                    @elseif ($payment->actionName == "Technical Officer")  
+                      {{$payment->examStartTime}}-{{$payment->examEndTime}} 
+                    @elseif ($payment->actionName == "Lab Attendants")  
+                      {{$payment->examStartTime}}-{{$payment->examEndTime}} 
+                    @elseif ($payment->actionName == "Hall Attendant")  
+                      {{$payment->examStartTime}}-{{$payment->examEndTime}} 
+                    @endif  
+                  </td> 
+                  
+                  <td>
+                    @if ($payment->actionName == "Supervision")
+                      {{$payment->examType}} 
+                    @elseif ($payment->actionName == "Invigilation")  
+                      {{$payment->examType}}  
+                    @elseif ($payment->actionName == "Technical Officer")  
+                      {{$payment->examType}}  
+                    @elseif ($payment->actionName == "Lab Attendants")  
+                      {{$payment->examType}}  
+                    @elseif ($payment->actionName == "Hall Attendant")  
+                      {{$payment->examType}}  
+                    @endif  
+                  </td> 
+                   
+                  <td>
+                    @if ($payment->actionName == "Supervision")
+                      @if ($payment->examType == "Research")
+                          {{$payment->examNumOfStudents}} 
+                      @endif
+                    @endif
+                  </td>
+                   
+                  <td>
+                    @if ($payment->actionName == "Supervision")
+                      @if ($payment->examType == "Group Project")
+                          {{$payment->examNumOfGroups}} 
+                      @endif
+                    @endif
+                  </td>
+                   
+                  <td>
+                    @if ($payment->actionName == "Supervision")
+                      @if ($payment->examType == "Practical")
+                        {{$payment->unitPrice}} 
+                      @elseif ($payment->examType == "Research")
+                        {{$payment->examNumOfStudents * $payment->unitPrice}}
+                      @elseif ($payment->examType == "Group Project")
+                        {{$payment->examNumOfGroups * $payment->unitPrice}}    
+                      @endif
+                    @endif
+                  </td>
 
-                  <tr>
+                  <td>
+                    @if ($payment->actionName == "Invigilation")
+                      @if ($payment->examType == "Practical")
+                        {{$payment->unitPrice}} 
+                        
+                      @endif
+                    @endif
+                  </td>
+
+                  <td>
+                    @if ($payment->actionName == "Technical Officer")
+                      @if ($payment->examType == "Practical")
+                        {{$payment->unitPrice}} 
+                        
+                      @endif
+                    @endif
+                  </td>
+
+                  <td>
+                    @if ($payment->actionName == "Lab Attendants")
+                      @if ($payment->examType == "Practical")
+                        {{$payment->unitPrice}} 
+                        
+                      @endif
+                    @endif
+                  </td>
+
+                  <td>
+                    @if ($payment->actionName == "Hall Attendant")
+                      @if ($payment->examType == "Practical")
+                        {{$payment->unitPrice}} 
+                        
+                      @endif
+                    @endif
+                  </td>
+
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  
+                
+                </tr>
+                  
+                 
+
+                <tr>
                     <td colspan="14" style = "text-align:right">Grand Total</td>
                     <td>  </td>
-                  </tr>
+                </tr>
 
               </tr>
              
-              @endfor
+              @endforeach
             </tbody>
 
             

@@ -32,8 +32,7 @@ class PreparationOfQuestionPaperReportController extends Controller
             //'payments.id as paymentId',
 
             //'users.id as userId',
-            'users.first_name as userFirstName',
-            'users.last_name as userLastName',
+            'users.name as userName',
             'users.designation as userDesignation',
             'users.nic_num as userNicNum',
 
@@ -48,6 +47,7 @@ class PreparationOfQuestionPaperReportController extends Controller
             'courses.code as courseCode',
 
             //'prices.id as priceID',
+            'prices.price as unitPrice',
 
             //'exam_types.id as examTypeId',
             'exam_types.type as examType',
@@ -58,47 +58,14 @@ class PreparationOfQuestionPaperReportController extends Controller
             'actions.name as actionName'
 
             )
-        ->get();
+            //->groupBy('userName')
+            ->get();
         //dd($payments);
 
         return view('preparationofquestionpapers.index', compact('payments'));
 
 
-        /*$payments = DB::table('payments')
-        ->leftJoin('users','users.id',"=",'payments.user_id')
-        ->leftJoin('user_types','user_types.id',"=",'users.user_type_id')
-        ->leftJoin('exams','exams.id',"=",'payments.exam_id')
-        ->leftJoin('courses','courses.id',"=",'exams.course_id')
-        ->select(
-            'payments.id as paymentId',
-            'users.id as userId',
-            'users.first_name as userFirstName',
-            'user_types.id as userTypeId',
-            'exams.id as examID',
-            'exams.duration as examDuration',
-            'courses.id as courseID'
-            )
-        ->get();
-        dd($payments);*/
-
-
-
-         /*foreach ($payments as $payment)
-         { 
-            // Code Here 
-            
-            
-            $user = DB::table('users')
-            ->leftJoin('user_types','user_types.id',"=",'users.user_type_id')
-            ->get();
-            dd($user);
-
-            $usertype = DB::table('user_types')
-            ->where('id', '=', $user->user_type_id)
-            ->get();
-            dd($usertype);
-        }*/
-
+        
 
        
    }

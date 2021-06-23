@@ -25,7 +25,13 @@
           <div class="form-group">
 
                 <label for="unit">Unit:</label>
-                <input type="text" class="form-control" name="unit"/>
+                <select class="form-control" name="unit">
+                  <option value="Duration">Duration</option>
+                  <option value="Student">Student</option>
+                  <option value="Page">Page</option>
+                  <option value="Group">Group</option>
+                  <option value="Exam">Exam</option>
+                </select>
             </div>
             <div class="form-group">
 

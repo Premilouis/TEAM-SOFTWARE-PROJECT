@@ -24,6 +24,7 @@
   <thead>
             <tr>
             <td>ID</td>
+            <td>EXAM NAME</td>
             <td>DURATION</td>
             <td>NUM OF STUDENTS</td>
             <td>START TIME</td>
@@ -42,6 +43,7 @@
             @foreach($exams as $exam)
             <tr>
                 <td>{{$exam->id}}</td>
+                <td>{{$exam->courseCode}}_{{$exam->kind}}</td>
                 <td>{{$exam->duration}}</td>
                 <td>{{$exam->num_of_students}}</td>
                 <td>{{$exam->start_time}}</td>

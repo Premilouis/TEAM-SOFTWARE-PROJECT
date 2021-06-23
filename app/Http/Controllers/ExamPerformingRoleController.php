@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ExamPerformingRole;
 use App\Models\Exam;
 use App\Models\PerformingRole;
+use App\Models\Course;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,14 @@ class ExamPerformingRoleController extends Controller
        
        ->leftJoin('exams','exam_performing_roles.exam_id',"=",'exams.id')
        ->leftJoin('performing_roles','exam_performing_roles.performing_role_id',"=",'performing_roles.id')
-       ->select('exam_performing_roles.id','exams.id as examId','performing_roles.id as performingRoleId')
+       ->leftJoin('courses','exams.course_id',"=",'courses.id')
+       ->leftJoin('users','performing_roles.user_id',"=",'users.id')
+       ->leftJoin('actions','performing_roles.action_id',"=",'actions.id')
+       ->select('exam_performing_roles.id','exams.kind as examKind','performing_roles.id as performingRoleId','courses.code as courseCode','users.email as userEmail','actions.name as actionName')
        ->get();
-       //dd($examperformingroles);
+      // dd($examperformingroles);
        
+
        
        return view('examperformingroles.index', compact('examperformingroles'));
    }
@@ -44,16 +49,34 @@ class ExamPerformingRoleController extends Controller
 
    public function create()
    {
-       $exam = Exam::all();
-       $performingrole = PerformingRole::all();
+        $exam = DB::table('exams')
+        ->leftJoin('courses','exams.course_id',"=",'courses.id')
+        ->select('exams.*','courses.code as courseCode')
+        ->get();
+
+      $performingrole = DB::table('performing_roles')
+       ->leftJoin('users','performing_roles.user_id',"=",'users.id')
+       ->leftJoin('actions','performing_roles.action_id',"=",'actions.id')
+       ->select('performing_roles.*','users.email as userEmail','actions.name as actionName')
+       ->get();
+
        return view('examperformingroles.create')->with('exam',$exam)->with('performingrole',$performingrole);
    }
 
    public function edit($id)
    {
        $examperformingrole = ExamPerformingRole::find($id);
-       $exam = Exam::all();
-       $performingrole = PerformingRole::all();
+       
+       $exam = DB::table('exams')
+       ->leftJoin('courses','exams.course_id',"=",'courses.id')
+       ->select('exams.*','courses.code as courseCode')
+       ->get();
+      
+       $performingrole = DB::table('performing_roles')
+       ->leftJoin('users','performing_roles.user_id',"=",'users.id')
+       ->leftJoin('actions','performing_roles.action_id',"=",'actions.id')
+       ->select('performing_roles.*','users.email as userEmail','actions.name as actionName')
+       ->get();
        return view('examperformingroles.edit', compact('examperformingrole'))->with('exam',$exam)->with('performingrole',$performingrole);
    }
 

@@ -24,52 +24,42 @@
         <form method="post" action="{{ route('updatepayments', ['id' => $payment->id]) }}">
             @method('PATCH') 
             @csrf
-            <div class="form-group">
-
-                <label for="date">Date:</label>
-                <input type="date" class="form-control" name="date" value={{ $payment->date }} />
-            </div>
-            <div class="form-group">
-
-                <label for="amount">Amount:</label>
-                <input type="text" class="form-control" name="amount" value={{ $payment->amount }} />
-            </div>
-            
+           
                 <div class="form-group">
-                <label for="user_id">User ID:</label>  
-                <select class="form-control" name="user_id" value={{ $payment->id }} >
-                @foreach ($user as $u)
-                <option value="{{$u->id}}" {{ $u->id == $payment->user_id ? 'selected' : ''}}>{{$u->id}}</option>
+                <label for="user_id">User EMAIL:</label>  
+                <select class="form-control" name="user_id" value={{ $payment->userEmail }} >
+                @foreach ($performingrole as $p)
+                <option value="{{$p->id}}" {{ $p->id == $payment->user_id ? 'selected' : ''}}>{{$p->userEmail}}</option>
                 @endforeach
                 </select>
                 </div>
 
                 <div class="form-group">
-                <label for="exam_id">Exam ID:</label>  
-                <select class="form-control" name="exam_id" value={{ $payment->id }} >
+                <label for="exam_id">Exam Name:</label>  
+                <select class="form-control" name="exam_id" value={{ $payment->examKind }} >
                 @foreach ($exam as $e)
-                <option value="{{$e->id}}" {{ $e->id == $payment->exam_id ? 'selected' : ''}}>{{$e->id}}</option>
+                <option value="{{$e->id}}" {{ $e->id == $payment->exam_id ? 'selected' : ''}}>{{$e->courseCode}}_{{$e->kind}}</option>
                 @endforeach
                 </select>
-                </div>  
+                </div> 
 
                 <div class="form-group">
-                <label for="price_id">Price ID:</label>  
-                <select class="form-control" name="price_id" value={{ $payment->id }} >
+                <label for="price_id">Price Description:</label>  
+                <select class="form-control" name="price_id" value={{ $payment->priceUnit }} >
                 @foreach ($price as $p)
-                <option value="{{$p->id}}" {{ $p->id == $payment->price_id ? 'selected' : ''}}>{{$p->id}}</option>
+                <option value="{{$p->id}}" {{ $p->id == $payment->price_id ? 'selected' : ''}}>{{$p->unit}}_{{$p->userType}}_{{$p->examType}}_{{$p->actionName}}</option>
                 @endforeach
                 </select>
                 </div>  
 
                 <div class="form-group">
-                <label for="performing_role_id">PerformingRole ID:</label>  
-                <select class="form-control" name="performing_role_id" value={{ $payment->id }} >
+                <label for="performing_role_id">User Action:</label>  
+                <select class="form-control" name="performing_role_id" value={{ $payment->userEmail }} >
                 @foreach ($performingrole as $pr)
-                <option value="{{$pr->id}}" {{ $pr->id == $payment->performing_role_id ? 'selected' : ''}}>{{$pr->id}}</option>
+                <option value="{{$pr->id}}" {{ $pr->id == $payment->performing_role_id ? 'selected' : ''}}>{{$pr->userEmail}}_{{$pr->actionName}}</option>
                 @endforeach
                 </select>
-                </div>  
+                </div>   
 
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

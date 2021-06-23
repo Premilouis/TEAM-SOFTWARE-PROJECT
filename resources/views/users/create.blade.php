@@ -35,14 +35,10 @@
             </div>
             <div class="form-group">
 
-                <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" name="first_name"/>
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name"/>
             </div>
-            <div class="form-group">
-
-                <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" name="last_name"/>
-            </div>
+            
             <div class="form-group">
 
                 <label for="mobile">Mobile:</label>

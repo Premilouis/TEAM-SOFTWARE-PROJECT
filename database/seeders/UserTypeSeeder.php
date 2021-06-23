@@ -18,15 +18,15 @@ class UserTypeSeeder extends Seeder
         //UserType::factory()->times(10)->create();
 
         UserType::create([
-            'type'=>'internal',
+            'type'=>'Internal',
         ]);
 
         UserType::create([
-            'type'=>'external',
+            'type'=>'External',
         ]);
 
         UserType::create([
-            'type'=>'foreigner',
+            'type'=>'Foreigner',
         ]);
 
 

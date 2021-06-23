@@ -34,9 +34,9 @@
     <div class="row">
 
         <div class="col-8">
-            <h5 class="row-center">Faculty : ....................................................................................................</h5>
-            <h5 class="row-center">Department : ..........................................................................................</h5>
-            <h5 class="row-center">Name of Examination : ........................................................................</h5>
+        <h5 class="row-center">Faculty : Science</h5>
+            <h5 class="row-center">Department : Computer Science</h5>
+            <h5 class="row-center">Name of Examination : 1st Semester Examination in Science - 2021</h5>
         </div>
 
     </div>
@@ -89,36 +89,154 @@
         </thead>
 
         <tbody>
-            @for ($j = 0; $j < 3; $j++)
+        @foreach($payments as $payment)
               <tr>
                 
                   <tr>
-                    <th colspan="17" style = "text-align:left">Name of Examiner,Designation,NIC Number(Internal Examiner/External Examiner/Foreign Examiner)</th>
+                    <td colspan="17" style = "text-align:left">
+                    @if ($payment->actionName == "1st Marking")
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}})
+                    @elseif ($payment->actionName == "2nd Marking") 
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}})
+                    @endif
+                  </td>
+                
                   </tr>
-
-                  @for ($i = 0; $i < 2; $i++)
+                  
+                
                   <tr>
-                    <td border="1px solid black">########## </td>
-                    <td border="1px solid black">########## </td>
-                    <td border="1px solid black">########## </td>
-                    
+                    <td>
+                    @if ($payment->actionName == "1st Marking")
+                      {{$payment->courseCode}} 
+                    @elseif ($payment->actionName == "2nd Marking")  
+                      {{$payment->courseCode}}  
+                    @endif
+                    </td>
+                    <td>
+                    @if ($payment->actionName == "1st Marking")
+                      {{$payment->examDate}} 
+                    @elseif ($payment->actionName == "2nd Marking")  
+                      {{$payment->examDate}}  
+                    @endif
+                    </td>
+                    <td>
+                    @if ($payment->actionName == "1st Marking")
+                      {{$payment->examStartTime}}-{{$payment->examEndTime}} 
+                    @elseif ($payment->actionName == "2nd Marking") 
+                      {{$payment->examStartTime}}-{{$payment->examEndTime}} 
+                    @endif
+                    </td>
+                    <td>
+                    @if ($payment->actionName == "1st Marking")
+                      {{$payment->examType}} 
+                    @elseif ($payment->actionName == "2nd Marking")  
+                      {{$payment->examType}}  
+                    @endif 
+                    </td>
+                    <td>
+                    @if ($payment->actionName == "1st Marking")
+                      @if ($payment->examKind == "Proper")
+                          {{$payment->examNumOfStudents}} 
+                      @endif
+                    @elseif ($payment->actionName == "2nd Marking") 
+                      @if ($payment->examKind == "Proper")
+                          {{$payment->examNumOfStudents}} 
+                      @endif 
+                    @endif 
+                    </td>
+                    <td>
+                    @if ($payment->actionName == "1st Marking")
+                      @if ($payment->examKind == "Repeat")
+                          {{$payment->examNumOfStudents}} 
+                      @endif
+                    @elseif ($payment->actionName == "2nd Marking") 
+                      @if ($payment->examKind == "Repeat")
+                          {{$payment->examNumOfStudents}} 
+                      @endif 
+                    @endif
+                    </td>
+                    <td>
+                    @if ($payment->actionName == "1st Marking")
+                        1
+                    @elseif ($payment->actionName == "2nd Marking")
+                        2
+                    @endif
+                    </td>
+                    <td> 
+                    @if ($payment->userType == "Internal")
+                        @if ($payment->actionName == "1st Marking")
+                            {{$payment->unitPrice}} 
+                        @elseif ($payment->actionName == "2nd Marking")
+                            {{$payment->unitPrice}} 
+                        @endif
+                    @elseif ($payment->userType == "External")
+                        @if ($payment->actionName == "1st Marking")
+                            {{$payment->unitPrice}} 
+                        @elseif ($payment->actionName == "2nd Marking")
+                            {{$payment->unitPrice}} 
+                        @endif  
+                    @else
+                        @if ($payment->actionName == "1st Marking")
+                            {{$payment->unitPrice}} 
+                        @elseif ($payment->actionName == "2nd Marking")
+                            {{$payment->unitPrice}} 
+                        @endif
+                    @endif
+                    </td>
+                    <td> 
+                    @if ($payment->userType == "Internal")
+                        @if ($payment->actionName == "1st Marking")
+                            {{$payment->examNumOfStudents * $payment->unitPrice}} 
+                        @elseif ($payment->actionName == "2nd Marking")
+                            {{$payment->examNumOfStudents * $payment->unitPrice}} 
+                        @endif
+                    @elseif ($payment->userType == "External")
+                        @if ($payment->actionName == "1st Marking")
+                            {{$payment->examNumOfStudents * $payment->unitPrice}} 
+                        @elseif ($payment->actionName == "2nd Marking")
+                            {{$payment->examNumOfStudents * $payment->unitPrice}} 
+                        @endif  
+                    @else
+                        @if ($payment->actionName == "1st Marking")
+                          @if ($payment->examNumOfStudents <= 25)
+                            125
+                          @else 
+                            {{$payment->examNumOfStudents * $payment->unitPrice}}
+                          @endif
+                        @elseif ($payment->actionName == "2nd Marking")
+                          @if ($payment->examNumOfStudents <= 25)
+                            125
+                          @else 
+                            {{$payment->examNumOfStudents * $payment->unitPrice}}
+                          @endif
+                        @endif
+                    @endif
+                    </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
                     
                   </tr>
                   
-                  @endfor
+                 
 
                   <tr>
                     <td colspan="16" style = "text-align:right">Grand Total</td>
                     <td>  </td>
                   </tr>
-                  
+
               </tr>
              
-              @endfor
+            @endforeach
             </tbody>
 
             
-        </table>
+      </table>
    
     
 

@@ -26,8 +26,8 @@
             <td>ID</td>
             <td>USER NAME</td>
             <td>EMAIL</td>
-            <td>FIRST NAME</td>
-            <td>LAST NAME</td>
+            <td>NAME</td>
+            
             <td>MOBILE</td>
             <td>BANK ACC NUM</td>
             <td>BANK NAME</td>
@@ -45,8 +45,8 @@
                 <td>{{$user->id}}</td>
                 <td>{{$user->user_name}}</td>
                 <td>{{$user->email}}</td>
-                <td>{{$user->first_name}}</td>
-                <td>{{$user->last_name}}</td>
+                <td>{{$user->name}}</td>
+                
                 <td>{{$user->mobile}}</td>
                 <td>{{$user->bank_acc_num}}</td>
                 <td>{{$user->bank_name}}</td>

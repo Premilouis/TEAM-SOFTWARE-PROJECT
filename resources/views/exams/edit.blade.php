@@ -53,7 +53,10 @@
             <div class="form-group">
 
                 <label for="kind">Kind:</label>
-                <input type="text" class="form-control" name="kind" value={{ $exam->kind }} />
+                <select class="form-control" name="kind" value={{ $exam->kind }} />
+                    <option value="Proper" {{ $exam->kind == "Proper" ? 'selected' : ''}}>Proper</option>
+                    <option value=Repeat {{ $exam->kind == "Repeat" ? 'selected' : ''}}>Repeat</option>
+                </select>
             </div>
             <div class="form-group">
 

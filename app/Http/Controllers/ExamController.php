@@ -24,14 +24,11 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'duration'=>'required',
-            'num_of_students'=>'required',
+           
             'start_time'=>'required',
             'end_time'=>'required',
             'date'=>'required',
-            'kind'=>'required',
-            'num_of_pages'=>'required',
-            'num_of_groups'=>'required',
+           
             'exam_type_id'=>'required',
             'course_id'=>'required',
             
@@ -75,14 +72,11 @@ class ExamController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'duration'=>'required',
-            'num_of_students'=>'required',
+            
             'start_time'=>'required',
             'end_time'=>'required',
             'date'=>'required',
-            'kind'=>'required',
-            'num_of_pages'=>'required',
-            'num_of_groups'=>'required',
+            
             'exam_type_id'=>'required',
             'course_id'=>'required',
             

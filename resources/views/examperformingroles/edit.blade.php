@@ -26,22 +26,22 @@
             @csrf
             
 
-                <div class="form-group">
-                <label for="exam_id">Exam ID:</label>  
-                <select class="form-control" name="exam_id" value={{ $examperformingrole->id }} >
+            <div class="form-group">
+                <label for="exam_id">Exam Name:</label>  
+                <select class="form-control" name="exam_id" value={{ $examperformingrole->examKind }} >
                 @foreach ($exam as $e)
-                <option value="{{$e->id}}" {{ $e->id == $examperformingrole->exam_id ? 'selected' : ''}}>{{$e->id}}</option>
+                <option value="{{$e->id}}" {{ $e->id == $examperformingrole->exam_id ? 'selected' : ''}}>{{$e->courseCode}}_{{$e->kind}}</option>
                 @endforeach
                 </select>
-                </div>  
+                </div>
 
                 
 
                 <div class="form-group">
-                <label for="performing_role_id">PerformingRole ID:</label>  
-                <select class="form-control" name="performing_role_id" value={{ $examperformingrole->id }} >
+                <label for="performing_role_id">User Action:</label>  
+                <select class="form-control" name="performing_role_id" value={{ $examperformingrole->userEmail }} >
                 @foreach ($performingrole as $pr)
-                <option value="{{$pr->id}}" {{ $pr->id == $examperformingrole->performing_role_id ? 'selected' : ''}}>{{$pr->id}}</option>
+                <option value="{{$pr->id}}" {{ $pr->id == $examperformingrole->performing_role_id ? 'selected' : ''}}>{{$pr->userEmail}}_{{$pr->actionName}}</option>
                 @endforeach
                 </select>
                 </div>  

@@ -27,7 +27,14 @@
             <div class="form-group">
 
                 <label for="unit">Unit:</label>
-                <input type="text" class="form-control" name="unit" value={{ $price->unit }} />
+                <select class="form-control" name="unit" value={{ $price->unit }} />
+                    <option value="Duration" {{ $price->unit == "Duration" ? 'selected' : ''}}>Duration</option>
+                    <option value=Student {{ $price->unit == "Student" ? 'selected' : ''}}>Student</option>
+                    <option value="Page" {{ $price->unit == "Page" ? 'selected' : ''}}>Page</option>
+                    <option value="Group" {{ $price->unit == "Group" ? 'selected' : ''}}>Group</option>
+                    <option value="Exam" {{ $price->unit == "Exam" ? 'selected' : ''}}>Exam</option>
+                    
+                </select>
             </div>
             <div class="form-group">
 

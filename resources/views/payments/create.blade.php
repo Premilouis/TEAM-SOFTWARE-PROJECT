@@ -22,49 +22,40 @@
     @endif
       <form method="post" action="{{ url('/storepayments') }}">
           @csrf
-          <div class="form-group">
-
-                <label for="date">Date:</label>
-                <input type="date" class="form-control" name="date"/>
-            </div>
-            <div class="form-group">
-
-                <label for="amount">Amount:</label>
-                <input type="text" class="form-control" name="amount"/>
-            </div>
+          
 
                 <div class="form-group">
-                <label for="user_id">User ID:</label>  
+                <label for="user_id">User Email:</label>  
                 <select class="form-control" name="user_id">
-                @foreach ($user as $u)
-                <option value="{{$u->id}}">{{$u->id}}</option>
+                @foreach ($performingrole as $p)
+                <option value="{{$p->id}}">{{$p->userEmail}}</option>
                 @endforeach
                 </select>
                 </div>
 
                 <div class="form-group">
-                <label for="exam_id">Exam ID:</label>  
+                <label for="exam_id">Exam NAME:</label>  
                 <select class="form-control" name="exam_id">
                 @foreach ($exam as $e)
-                <option value="{{$e->id}}">{{$e->id}}</option>
+                <option value="{{$e->id}}">{{$e->courseCode}}_{{$e->kind}}</option>
                 @endforeach
                 </select>
-                </div>  
+                </div> 
 
                 <div class="form-group">
-                <label for="price_id">Price ID:</label>  
+                <label for="price_id">Price Description:</label>  
                 <select class="form-control" name="price_id">
                 @foreach ($price as $p)
-                <option value="{{$p->id}}">{{$p->id}}</option>
+                <option value="{{$p->id}}">{{$p->unit}}_{{$p->userType}}_{{$p->examType}}_{{$p->actionName}}</option>
                 @endforeach
                 </select>
                 </div>  
 
                 <div class="form-group">
-                <label for="performing_role_id">PerformingRole ID:</label>  
+                <label for="performing_role_id">PerformingRole NAME:</label>  
                 <select class="form-control" name="performing_role_id">
                 @foreach ($performingrole as $pr)
-                <option value="{{$pr->id}}">{{$pr->id}}</option>
+                <option value="{{$pr->id}}">{{$pr->userEmail}}_{{$pr->actionName}}</option>
                 @endforeach
                 </select>
                 </div>  

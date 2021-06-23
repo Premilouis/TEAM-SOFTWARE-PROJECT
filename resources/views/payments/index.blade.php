@@ -24,12 +24,10 @@
   <thead>
             <tr>
             <td>ID</td>
-            <td>DATE</td>
-            <td>AMOUNT</td>
-            <td>USER ID</td>
-            <td>EXAM ID</td>
-            <td>PRICE ID</td>
-            <td>PERFORMINGROLE ID</td>
+            <td>USER EMAIL</td>
+            <td>EXAM NAME</td>
+            <td>PRICE DESCRIPTION</td>
+            <td>PERFORMINGROLE NAME</td>
             
             <td colspan = 2>Actions</td>
             </tr>
@@ -38,12 +36,11 @@
             @foreach($payments as $payment)
             <tr>
                 <td>{{$payment->id}}</td>
-                <td>{{$payment->date}}</td>
-                <td>{{$payment->amount}}</td>
-                <td>{{$payment->userId}}</td>
-                <td>{{$payment->examId}}</td>
-                <td>{{$payment->priceId}}</td>
-                <td>{{$payment->performingRoleId}}</td>
+                
+                <td>{{$payment->userEmail}}</td>
+                <td>{{$payment->courseCode}}_{{$payment->examKind}}</td>
+                <td>{{$payment->priceUnit}}_{{$payment->userType}}_{{$payment->examType}}_{{$payment->actionName}}</td>
+                <td>{{$payment->userEmail}}_{{$payment->actionName}}</td>
                 
             <td>
                 <a href="{{ route('editpayments', ['id' => $payment->id]) }}" class="btn btn-primary">Edit</a>

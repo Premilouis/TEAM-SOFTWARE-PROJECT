@@ -24,7 +24,7 @@ class ActionFactory extends Factory
     {
         return [
             //
-            'name' => $this->faker->text(30),
+            //'name' => $this->faker->text(30),
             
         ];
     }

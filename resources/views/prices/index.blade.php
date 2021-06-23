@@ -24,6 +24,7 @@
   <thead>
             <tr>
             <td>ID</td>
+            <td>DESCRIPTION</td>
             <td>UNIT</td>
             <td>PRICE</td>
             <td>USER TYPE</td>
@@ -37,6 +38,7 @@
             @foreach($prices as $price)
             <tr>
                 <td>{{$price->id}}</td>
+                <td>{{$price->unit}}_{{$price->userType}}_{{$price->examType}}_{{$price->actionName}}</td>
                 <td>{{$price->unit}}</td>
                 <td>{{$price->price}}</td>
                 <td>{{$price->userType}}</td>

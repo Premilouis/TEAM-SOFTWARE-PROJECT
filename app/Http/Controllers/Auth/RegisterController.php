@@ -55,13 +55,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'mobile' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
+            
+            //'mobile' => ['required'],
             'bank_acc_num' => ['required'],
             'bank_name' => ['required'],
-            'nic_num' => ['required'],
-            'designation' => ['required'],
+            //'nic_num' => ['required'],
+            //'designation' => ['required'],
             'user_type_id' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -78,8 +78,8 @@ class RegisterController extends Controller
         return User::create([
             'user_name' => $data['user_name'],
             'email' => $data['email'],
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'name' => $data['name'],
+            //'last_name' => $data['last_name'],
             'mobile' => $data['mobile'],
             'bank_acc_num' => $data['bank_acc_num'],
             'bank_name' => $data['bank_name'],

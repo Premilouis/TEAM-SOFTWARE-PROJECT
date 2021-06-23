@@ -24,8 +24,8 @@
   <thead>
             <tr>
             <td>ID</td>
-            <td>EXAM ID</td>
-            <td>PERFORMINGROLE ID</td>
+            <td>EXAM NAME</td>
+            <td>PERFORMINGROLE NAME</td>
             
             <td colspan = 2>Actions</td>
             </tr>
@@ -34,8 +34,8 @@
             @foreach($examperformingroles as $examperformingrole)
             <tr>
                 <td>{{$examperformingrole->id}}</td>
-                <td>{{$examperformingrole->examId}}</td>
-                <td>{{$examperformingrole->performingRoleId}}</td>
+                <td>{{$examperformingrole->courseCode}}_{{$examperformingrole->examKind}}</td>
+                <td>{{$examperformingrole->userEmail}}_{{$examperformingrole->actionName}}</td>
                 
             <td>
                 <a href="{{ route('editexamperformingroles', ['id' => $examperformingrole->id]) }}" class="btn btn-primary">Edit</a>

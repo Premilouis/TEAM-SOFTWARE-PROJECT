@@ -97,35 +97,108 @@
               <tr>
                 
                   <tr>
-                    <td colspan="19" style = "text-align:left">{{$payment->userFirstName}} {{$payment->userLastName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}}) </td>
+                    <td colspan="19" style = "text-align:left">
+                    @if ($payment->actionName == "Setting")
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}}) 
+                    @elseif ($payment->actionName == "Moderating") 
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}}) 
+                    @elseif ($payment->actionName == "Typing") 
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}}) 
+                    @elseif ($payment->actionName == "Supervision For Packeting") 
+                      {{$payment->userName}} , {{$payment->userDesignation}} , Nic No:- {{$payment->userNicNum}} ({{$payment->userType}}) 
+                      @endif
+                  </td>
                 
+                  </tr>
+                  
+                
+                  <tr>
+                    <td>
+                    @if ($payment->actionName == "Setting")
+                      {{$payment->courseCode}} 
+                    @elseif ($payment->actionName == "Moderating")
+                      {{$payment->courseCode}}
+                    @elseif ($payment->actionName == "Typing")
+                      {{$payment->courseCode}}
+                    @elseif ($payment->actionName == "Supervision For Packeting")
+                      {{$payment->courseCode}}   
+                    @endif
+                    </td>
+                    <td>
+                    @if ($payment->actionName == "Setting")
+                      {{$payment->examType}} 
+                    @elseif ($payment->actionName == "Moderating")
+                      {{$payment->examType}}
+                    @elseif ($payment->actionName == "Typing")
+                      {{$payment->examType}}
+                    @elseif ($payment->actionName == "Supervision For Packeting")
+                      {{$payment->examType}}   
+                    @endif
+                    </td>
+                    <td>
+                      @if ($payment->actionName == "Setting")
+                        S
+                      @elseif ($payment->actionName == "Moderating")
+                        M
+                      @endif
+                    </td>
+                    <td>
+                    @if ($payment->actionName == "Setting")
+                        {{$payment->examDuration}} 
+                    @elseif ($payment->actionName == "Moderating")
+                        {{$payment->examDuration}} 
+                    @endif
+                    </td>
+                    <td> 
+                    @if ($payment->userType != "Foreigner")
+                        @if ($payment->actionName == "Setting")
+                            {{$payment->examDuration * $payment->unitPrice}} 
+                        @elseif ($payment->actionName == "Moderating")
+                            {{$payment->examDuration * $payment->unitPrice}} 
+                        @endif
+                    @else
+                        @if ($payment->actionName == "Setting")
+                            {{$payment->unitPrice}} 
+                        @elseif ($payment->actionName == "Moderating")
+                            {{$payment->unitPrice}} 
+                        @endif
+                    @endif
+                    </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td>  
+                    @if ($payment->actionName == "Typing")
+                        {{$payment->examNumOfPages}} 
+                    @endif
+                    </td>
+                    <td> 
+                    @if ($payment->actionName == "Typing")
+                        @if ($payment->examNumOfPages <= 5)
+                            {{$payment->examNumOfPages * $payment->unitPrice}}
+                        @else
+                            500
+                        @endif
+                    @endif
+                    </td>
+                    
+                    <td> 
+                    @if ($payment->actionName == "Supervision For Packeting")
+                        {{$payment->unitPrice}} 
+                    @endif
+                    </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    
                   </tr>
                   
                  
-                  <tr>
-                    <td>{{$payment->courseCode}} </td>
-                    <td>{{$payment->examType}} </td>
-                    <td>{{$payment->actionName}} </td>
-                    <td>{{$payment->examDuration}}</td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-
-                  </tr>
-                  
-                
 
                   <tr>
                     <td colspan="18" style = "text-align:right">Grand Total</td>

@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Price;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PriceSeeder extends Seeder
 {
@@ -14,5 +16,13 @@ class PriceSeeder extends Seeder
     public function run()
     {
         //Price::factory()->times(10)->create();
+        /*Price::create([
+            'unit'=>'',
+            'price' => '',
+            'user_type_id' => '',
+            'exam_type_id' => '',
+            'action_id' => '',
+
+        ]);*/
     }
 }

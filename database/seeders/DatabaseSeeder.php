@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
            
        ]);
 
-       DB::table('user_types')->insert([
+      /* DB::table('user_types')->insert([
         'type'=>Str::random(20),
        ]);
 
@@ -44,8 +44,8 @@ class DatabaseSeeder extends Seeder
         'user_name'=>Str::random(20),
         'email'=>Str::random(20).'@gmail.com',
         'password'=>Hash::make('password'),
-        'first_name'=>Str::random(30),
-        'last_name'=>Str::random(30),
+        'name'=>Str::random(30),
+        
         'mobile'=>Str::random(20),
         'bank_name'=>Str::random(20),
         'bank_acc_num'=>Str::random(20),
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
     DB::table('user_roles')->insert([
         'user_id'=>rand(1,3),
         'role_id'=>rand(1,3),
-    ]);
+    ]);*/
     
     
 

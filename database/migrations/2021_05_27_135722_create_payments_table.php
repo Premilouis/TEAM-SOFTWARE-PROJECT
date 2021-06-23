@@ -15,8 +15,8 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('date');
-            $table->string('amount');
+            //$table->date('date');
+            //$table->string('amount');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('exam_id')->constrained()->onDelete('cascade');
             $table->foreignId('price_id')->constrained()->onDelete('cascade');

@@ -25,20 +25,20 @@
           
 
                 <div class="form-group">
-                <label for="exam_id">Exam ID:</label>  
+                <label for="exam_id">Exam NAME:</label>  
                 <select class="form-control" name="exam_id">
                 @foreach ($exam as $e)
-                <option value="{{$e->id}}">{{$e->id}}</option>
+                <option value="{{$e->id}}">{{$e->courseCode}}_{{$e->kind}}</option>
                 @endforeach
                 </select>
                 </div>  
 
                  
                 <div class="form-group">
-                <label for="performing_role_id">PerformingRole ID:</label>  
+                <label for="performing_role_id">PerformingRole NAME:</label>  
                 <select class="form-control" name="performing_role_id">
                 @foreach ($performingrole as $pr)
-                <option value="{{$pr->id}}">{{$pr->id}}</option>
+                <option value="{{$pr->id}}">{{$pr->userEmail}}_{{$pr->actionName}}</option>
                 @endforeach
                 </select>
                 </div>  

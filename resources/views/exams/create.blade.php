@@ -50,7 +50,10 @@
                 <div class="form-group">
 
                 <label for="kind">Kind:</label>
-                <input type="text" class="form-control" name="kind"/>
+                <select class="form-control" name="exam_type_id">
+                  <option value="Proper">Proper</option>
+                  <option value="Repeat">Repeat</option>
+                </select>
                 </div>
                 <div class="form-group">
 

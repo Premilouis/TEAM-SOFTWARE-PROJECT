@@ -26,13 +26,13 @@ class UserController extends Controller
         $request->validate([
             'user_name'=>'required',
             'email'=>'required|email|unique:users',
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'mobile'=>'required',
+            'name'=>'required',
+            //'last_name'=>'required',
+            //'mobile'=>'required',
             'bank_acc_num'=>'required',
             'bank_name'=>'required',
-            'nic_num'=>'required',
-            'designation'=>'required',
+            //'nic_num'=>'required',
+            //'designation'=>'required',
             'password'=>'required|AlphaNum|min:5',
             'user_type_id'=>'required',
             
@@ -41,8 +41,8 @@ class UserController extends Controller
         $user = new User([
             'user_name' => $request->get('user_name'),
             'email' => $request->get('email'),
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
+            'name' => $request->get('name'),
+            //'last_name' => $request->get('last_name'),
             'mobile' => $request->get('mobile'),
             'bank_acc_num' => $request->get('bank_acc_num'),
             'bank_name' => $request->get('bank_name'),
@@ -77,13 +77,13 @@ class UserController extends Controller
         $request->validate([
             'user_name'=>'required',
             'email'=>'required|email',
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'mobile'=>'required',
+            'name'=>'required',
+            //'last_name'=>'required',
+            //'mobile'=>'required',
             'bank_acc_num'=>'required',
             'bank_name'=>'required',
-            'nic_num'=>'required',
-            'designation'=>'required',
+            //'nic_num'=>'required',
+            //'designation'=>'required',
             'user_type_id'=>'required',
             //'password'=>'required|AlphaNum|min:5',
             
@@ -94,8 +94,8 @@ class UserController extends Controller
         $user = User::find($id);
         $user->user_name =  $request->get('user_name');
         $user->email =  $request->get('email');
-        $user->first_name =  $request->get('first_name');
-        $user->last_name =  $request->get('last_name');
+        $user->name =  $request->get('name');
+        //$user->last_name =  $request->get('last_name');
         $user->mobile =  $request->get('mobile');
         $user->bank_acc_num =  $request->get('bank_acc_num');
         $user->bank_name =  $request->get('bank_name');
